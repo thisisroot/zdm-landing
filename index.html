@@ -8,14 +8,15 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
 <div class="bg-wash" aria-hidden="true"></div>
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
 <header class="navbar" id="navbar">
   <div class="wrap navbar-inner">
@@ -25,24 +26,27 @@
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="#features">Features</a>
-      <a href="#download">Download</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#get-started">Development</a>
-      <a href="#contact">Contact</a>
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#download" data-i18n="nav.download">Download</a>
+      <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
+      <a href="#get-started" data-i18n="nav.development">Development</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
 
     <div class="navbar-actions">
+      <button class="lang-toggle" id="langToggle" type="button" title="Toggle language">
+        <span id="langToggleLabel">فارسی</span>
+      </button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
       </button>
       <a class="btn btn-ghost github-star" href="https://github.com/thisisroot/zdm" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-        <span>Star</span>
-        <span class="star-count" id="starCount">–</span>
+        <span data-i18n="nav.star">Star</span>
+        <span class="star-count ltr" id="starCount">–</span>
       </a>
-      <a class="btn btn-primary nav-download" id="navDownloadBtn" href="#download">Download</a>
+      <a class="btn btn-primary nav-download" id="navDownloadBtn" href="#download" data-i18n="nav.download">Download</a>
     </div>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -50,12 +54,15 @@
     </button>
   </div>
   <nav class="nav-links-mobile" id="mobileNav" aria-label="Primary mobile">
-    <a href="#features">Features</a>
-    <a href="#download">Download</a>
-    <a href="#architecture">Architecture</a>
-    <a href="#get-started">Development</a>
-    <a href="#contact">Contact</a>
+    <a href="#features" data-i18n="nav.features">Features</a>
+    <a href="#download" data-i18n="nav.download">Download</a>
+    <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
+    <a href="#get-started" data-i18n="nav.development">Development</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
     <a href="https://github.com/thisisroot/zdm" target="_blank" rel="noopener">GitHub ↗</a>
+    <button class="lang-toggle lang-toggle-mobile" id="langToggleMobile" type="button">
+      <span id="langToggleMobileLabel">فارسی</span>
+    </button>
   </nav>
 </header>
 
@@ -65,9 +72,9 @@
   <section class="hero" id="top">
     <div class="wrap hero-inner">
       <div class="hero-copy reveal">
-        <span class="eyebrow">Free &amp; open source · MIT licensed</span>
-        <h1>Downloads that use <span class="grad-text">every bit</span> of your connection.</h1>
-        <p class="hero-sub">
+        <span class="eyebrow" data-i18n="hero.eyebrow">Free &amp; open source · MIT licensed</span>
+        <h1 data-i18n="hero.title">Downloads that use <span class="grad-text">every bit</span> of your connection.</h1>
+        <p class="hero-sub" data-i18n="hero.sub">
           ZDM splits every file across multiple connections and pulls them all at once, so
           total throughput isn't capped by a single connection's speed. A native Rust engine,
           a small fast desktop shell — no bundled browser runtime.
@@ -76,47 +83,47 @@
         <div class="hero-ctas">
           <a class="btn btn-primary btn-lg" id="heroDownloadBtn" href="#download">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg>
-            <span id="heroDownloadLabel">Download for your OS</span>
+            <span id="heroDownloadLabel" data-i18n="hero.ctaFetching">Download for your OS</span>
           </a>
           <a class="btn btn-ghost btn-lg" href="https://github.com/thisisroot/zdm" target="_blank" rel="noopener">
             <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-            View source
+            <span data-i18n="hero.ctaSecondary">View source</span>
           </a>
         </div>
 
         <p class="hero-meta" id="heroMeta">
-          <span class="version-badge" id="versionBadge">fetching latest version…</span>
+          <span class="version-badge ltr" id="versionBadge" data-i18n="hero.fetching">fetching latest version…</span>
         </p>
 
         <div class="platform-row" aria-label="Available platforms">
-          <span class="platform-chip"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm8.5-1.2L21 3v8.5h-9.5V4.3ZM3 12.5h7.5V19L3 17.9v-5.4Zm8.5 0H21V21l-9.5-1.4v-7.1Z"/></svg> Windows</span>
-          <span class="platform-chip"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M16.7 12.4c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5.7-1 1.1-2 1.4-2.9-3.4-1.3-2.9-4.2-1.9-3.9v-.1Zm-2.6-8.8c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg> macOS</span>
-          <span class="platform-chip"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.5 2c-1.7 0-2.2 2.2-2.1 3.9.1 1.2-.1 2-.7 2.9-.6.8-1.5 1.7-2.2 2.7-1.2 1.7-1.9 3.7-1.6 5.3-.6.3-1 .9-.9 1.6.1 1 1.2 1.6 2.5 1.5.5.7 1.4 1.1 2.5 1.1 1 0 1.8-.4 2.3-1 .6.3 1.5.3 2.2 0 .5.6 1.3 1 2.3 1 1.1 0 2-.4 2.5-1.1 1.3.1 2.4-.5 2.5-1.5.1-.7-.3-1.3-.9-1.6.3-1.6-.4-3.6-1.6-5.3-.7-1-1.6-1.9-2.2-2.7-.6-.9-.8-1.7-.7-2.9.1-1.7-.4-3.9-2.1-3.9h-.7Z"/></svg> Linux (deb / rpm / AppImage)</span>
+          <span class="platform-chip"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm8.5-1.2L21 3v8.5h-9.5V4.3ZM3 12.5h7.5V19L3 17.9v-5.4Zm8.5 0H21V21l-9.5-1.4v-7.1Z"/></svg> <span data-i18n="hero.platformWindows">Windows</span></span>
+          <span class="platform-chip"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M16.7 12.4c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5.7-1 1.1-2 1.4-2.9-3.4-1.3-2.9-4.2-1.9-3.9v-.1Zm-2.6-8.8c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg> <span data-i18n="hero.platformMac">macOS</span></span>
+          <span class="platform-chip"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12.5 2c-1.7 0-2.2 2.2-2.1 3.9.1 1.2-.1 2-.7 2.9-.6.8-1.5 1.7-2.2 2.7-1.2 1.7-1.9 3.7-1.6 5.3-.6.3-1 .9-.9 1.6.1 1 1.2 1.6 2.5 1.5.5.7 1.4 1.1 2.5 1.1 1 0 1.8-.4 2.3-1 .6.3 1.5.3 2.2 0 .5.6 1.3 1 2.3 1 1.1 0 2-.4 2.5-1.1 1.3.1 2.4-.5 2.5-1.5.1-.7-.3-1.3-.9-1.6.3-1.6-.4-3.6-1.6-5.3-.7-1-1.6-1.9-2.2-2.7-.6-.9-.8-1.7-.7-2.9.1-1.7-.4-3.9-2.1-3.9h-.7Z"/></svg> <span data-i18n="hero.platformLinux">Linux (deb / rpm / AppImage)</span></span>
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-hidden="true">
+      <div class="hero-visual reveal" id="heroVisual" aria-hidden="true">
         <div class="glow glow-accent"></div>
         <div class="glow glow-progress"></div>
-        <div class="app-mock">
+        <div class="app-mock" id="appMock">
           <div class="app-mock-titlebar">
             <img src="assets/logo.png" alt="" class="app-mock-icon">
             <span>ZDM — Download Manager</span>
             <div class="app-mock-dots"><i></i><i></i><i></i></div>
           </div>
           <div class="app-mock-topbar">
-            <div class="hero-speed"><span class="figure" id="mockSpeed">142.8</span><span class="unit">MB/s</span></div>
-            <div class="hero-meta-mini"><span class="label">Active</span><span class="value">4 connections</span></div>
+            <div class="hero-speed ltr"><span class="figure" id="mockSpeed">142.8</span><span class="unit">MB/s</span></div>
+            <div class="hero-meta-mini"><span class="label" data-i18n="hero.mockActive">Active</span><span class="value ltr" data-i18n="hero.mockConnections">4 connections</span></div>
           </div>
           <div class="app-mock-body">
             <div class="mock-row" style="--seg-color: var(--progress)">
               <div class="mock-row-top">
                 <div class="mock-filetype">ISO</div>
                 <div class="mock-row-name">
-                  <div class="fname">ubuntu-24.04-desktop-amd64.iso</div>
-                  <div class="fmeta">3.9 GB · 8 segments</div>
+                  <div class="fname ltr">ubuntu-24.04-desktop-amd64.iso</div>
+                  <div class="fmeta ltr">3.9 GB · 8 segments</div>
                 </div>
-                <span class="status-pill downloading">Downloading</span>
+                <span class="status-pill downloading" data-i18n="hero.mockDownloading">Downloading</span>
               </div>
               <div class="segbar" id="segbarA"></div>
             </div>
@@ -124,10 +131,10 @@
               <div class="mock-row-top">
                 <div class="mock-filetype">ZIP</div>
                 <div class="mock-row-name">
-                  <div class="fname">dataset-archive-part-14.zip</div>
-                  <div class="fmeta">1.2 GB · 6 segments</div>
+                  <div class="fname ltr">dataset-archive-part-14.zip</div>
+                  <div class="fmeta ltr">1.2 GB · 6 segments</div>
                 </div>
-                <span class="status-pill downloading">Downloading</span>
+                <span class="status-pill downloading" data-i18n="hero.mockDownloading">Downloading</span>
               </div>
               <div class="segbar" id="segbarB"></div>
             </div>
@@ -135,10 +142,10 @@
               <div class="mock-row-top">
                 <div class="mock-filetype">PKG</div>
                 <div class="mock-row-name">
-                  <div class="fname">node-v22.4.0-darwin-arm64.tar.gz</div>
-                  <div class="fmeta">completed</div>
+                  <div class="fname ltr">node-v22.4.0-darwin-arm64.tar.gz</div>
+                  <div class="fmeta" data-i18n="hero.mockCompletedMeta">completed</div>
                 </div>
-                <span class="status-pill completed">Completed</span>
+                <span class="status-pill completed" data-i18n="hero.mockCompleted">Completed</span>
               </div>
             </div>
           </div>
@@ -151,20 +158,20 @@
   <section class="stats-strip reveal">
     <div class="wrap stats-inner">
       <div class="stat">
-        <span class="stat-value" id="starStat">–</span>
-        <span class="stat-label">GitHub stars</span>
+        <span class="stat-value ltr" id="starStat">–</span>
+        <span class="stat-label" data-i18n="stats.stars">GitHub stars</span>
       </div>
       <div class="stat">
-        <span class="stat-value">MIT</span>
-        <span class="stat-label">License</span>
+        <span class="stat-value ltr">MIT</span>
+        <span class="stat-label" data-i18n="stats.license">License</span>
       </div>
       <div class="stat">
-        <span class="stat-value">Rust</span>
-        <span class="stat-label">Core engine</span>
+        <span class="stat-value ltr">Rust</span>
+        <span class="stat-label" data-i18n="stats.core">Core engine</span>
       </div>
       <div class="stat">
-        <span class="stat-value">3</span>
-        <span class="stat-label">Platforms supported</span>
+        <span class="stat-value ltr">3</span>
+        <span class="stat-label" data-i18n="stats.platforms">Platforms supported</span>
       </div>
       <a class="badge-link" href="https://github.com/thisisroot/zdm/actions/workflows/build.yml" target="_blank" rel="noopener">
         <img src="https://github.com/thisisroot/zdm/actions/workflows/build.yml/badge.svg" alt="Build status" loading="lazy">
@@ -176,44 +183,44 @@
   <section class="section" id="features">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Features</span>
-        <h2>Built for throughput, not just a progress bar.</h2>
+        <span class="eyebrow" data-i18n="features.eyebrow">Features</span>
+        <h2 data-i18n="features.title">Built for throughput, not just a progress bar.</h2>
       </div>
 
       <div class="feature-grid">
         <article class="feature-card reveal">
           <div class="feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h10M4 18h16"/><circle cx="19" cy="12" r="2"/></svg></div>
-          <h3>Multi-connection segmented downloads</h3>
-          <p>Splits files into chunks pulled by N concurrent connections for maximum throughput.</p>
+          <h3 data-i18n="features.f1.title">Multi-connection segmented downloads</h3>
+          <p data-i18n="features.f1.desc">Splits files into chunks pulled by N concurrent connections for maximum throughput.</p>
         </article>
         <article class="feature-card reveal">
           <div class="feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-16 2 10h6"/></svg></div>
-          <h3>Genuine per-connection progress</h3>
-          <p>The UI shows exactly what each active connection is doing, straight from the engine's own telemetry.</p>
+          <h3 data-i18n="features.f2.title">Genuine per-connection progress</h3>
+          <p data-i18n="features.f2.desc">The UI shows exactly what each active connection is doing, straight from the engine's own telemetry.</p>
         </article>
         <article class="feature-card reveal">
           <div class="feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v6h6M20 20v-6h-6M4.5 9a8 8 0 0 1 14-4.5M19.5 15a8 8 0 0 1-14 4.5"/></svg></div>
-          <h3>Resumable transfers</h3>
-          <p>Survive an app restart, a lost connection, or a manual pause, and continue exactly where they left off.</p>
+          <h3 data-i18n="features.f3.title">Resumable transfers</h3>
+          <p data-i18n="features.f3.desc">Survive an app restart, a lost connection, or a manual pause, and continue exactly where they left off.</p>
         </article>
         <article class="feature-card reveal">
           <div class="feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 13h4"/></svg></div>
-          <h3>Queues</h3>
-          <p>Group downloads together with their own concurrency limit and bulk pause/resume.</p>
+          <h3 data-i18n="features.f4.title">Queues</h3>
+          <p data-i18n="features.f4.desc">Group downloads together with their own concurrency limit and bulk pause/resume.</p>
         </article>
         <article class="feature-card reveal">
           <div class="feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
-          <h3>Batch downloading</h3>
-          <p>Expand a numbered URL pattern into a full queue of files in one step.</p>
+          <h3 data-i18n="features.f5.title">Batch downloading</h3>
+          <p data-i18n="features.f5.desc">Expand a numbered URL pattern into a full queue of files in one step.</p>
         </article>
         <article class="feature-card reveal">
           <div class="feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4Zm0 5 9 4 9-4M3 17l9 4 9-4"/></svg></div>
-          <h3>Auto-categorized folders</h3>
-          <p>New downloads are sorted into the right folder by file type, automatically.</p>
+          <h3 data-i18n="features.f6.title">Auto-categorized folders</h3>
+          <p data-i18n="features.f6.desc">New downloads are sorted into the right folder by file type, automatically.</p>
         </article>
       </div>
 
-      <p class="feature-footnote reveal">Native and lightweight — a Rust core with a small, fast desktop shell; no bundled browser runtime.</p>
+      <p class="feature-footnote reveal" data-i18n="features.footnote">Native and lightweight — a Rust core with a small, fast desktop shell; no bundled browser runtime.</p>
     </div>
   </section>
 
@@ -221,56 +228,70 @@
   <section class="section section-alt" id="download">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Download</span>
-        <h2>Grab the latest build for your platform.</h2>
-        <p class="section-sub" id="releaseInfo">Loading the latest release from GitHub…</p>
+        <span class="eyebrow" data-i18n="download.eyebrow">Download</span>
+        <h2 data-i18n="download.title">Grab the latest build for your platform.</h2>
+        <p class="section-sub" id="releaseInfo" data-i18n="download.loading">Loading the latest release from GitHub…</p>
       </div>
 
-      <div class="download-grid">
-        <article class="download-card reveal" data-platform="windows">
-          <div class="download-card-head">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm8.5-1.2L21 3v8.5h-9.5V4.3ZM3 12.5h7.5V19L3 17.9v-5.4Zm8.5 0H21V21l-9.5-1.4v-7.1Z"/></svg>
-            <h3>Windows</h3>
-          </div>
-          <p>64-bit, Windows 10 and later.</p>
-          <div class="download-actions" id="dl-windows">
-            <a class="btn btn-primary btn-block dl-btn" data-asset="exe" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">.exe (NSIS) <span class="dl-size"></span></a>
-            <a class="btn btn-ghost btn-block dl-btn" data-asset="msi" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">.msi <span class="dl-size"></span></a>
-          </div>
-        </article>
+      <div class="download-stage reveal">
+        <div class="download-primary" id="downloadPrimary"></div>
 
-        <article class="download-card reveal" data-platform="mac">
-          <div class="download-card-head">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M16.7 12.4c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5.7-1 1.1-2 1.4-2.9-3.4-1.3-2.9-4.2-1.9-3.9v-.1Zm-2.6-8.8c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg>
-            <h3>macOS</h3>
-          </div>
-          <p>Universal — Apple Silicon &amp; Intel.</p>
-          <div class="download-actions" id="dl-mac">
-            <a class="btn btn-primary btn-block dl-btn" data-asset="dmg-arm" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">.dmg (Apple Silicon) <span class="dl-size"></span></a>
-            <a class="btn btn-ghost btn-block dl-btn" data-asset="dmg-intel" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">.dmg (Intel) <span class="dl-size"></span></a>
-          </div>
-        </article>
+        <div class="collapsible other-platforms" id="otherPlatformsWrap" data-collapsible>
+          <button class="other-platforms-toggle collapsible-trigger" id="otherPlatformsToggle" type="button" aria-expanded="false" aria-controls="otherPlatformsCollapse">
+            <span data-i18n="download.otherPlatforms">Other platforms</span>
+            <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="collapsible-panel" id="otherPlatformsCollapse">
+            <div class="collapsible-inner">
+              <div class="download-grid download-secondary" id="downloadSecondary">
+                <article class="download-card" data-platform="windows">
+                  <div class="download-card-head">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm8.5-1.2L21 3v8.5h-9.5V4.3ZM3 12.5h7.5V19L3 17.9v-5.4Zm8.5 0H21V21l-9.5-1.4v-7.1Z"/></svg>
+                    <h3 data-i18n="download.windows.title">Windows</h3>
+                  </div>
+                  <p data-i18n="download.windows.desc">64-bit, Windows 10 and later.</p>
+                  <div class="download-actions" id="dl-windows">
+                    <a class="btn btn-primary btn-block dl-btn" data-asset="exe" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener"><span class="dl-label" data-i18n="download.fmt.exe">.exe (NSIS)</span><span class="dl-size ltr"></span></a>
+                    <a class="btn btn-ghost btn-block dl-btn" data-asset="msi" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener"><span class="dl-label" data-i18n="download.fmt.msi">.msi</span><span class="dl-size ltr"></span></a>
+                  </div>
+                </article>
 
-        <article class="download-card reveal" data-platform="linux">
-          <div class="download-card-head">
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12.5 2c-1.7 0-2.2 2.2-2.1 3.9.1 1.2-.1 2-.7 2.9-.6.8-1.5 1.7-2.2 2.7-1.2 1.7-1.9 3.7-1.6 5.3-.6.3-1 .9-.9 1.6.1 1 1.2 1.6 2.5 1.5.5.7 1.4 1.1 2.5 1.1 1 0 1.8-.4 2.3-1 .6.3 1.5.3 2.2 0 .5.6 1.3 1 2.3 1 1.1 0 2-.4 2.5-1.1 1.3.1 2.4-.5 2.5-1.5.1-.7-.3-1.3-.9-1.6.3-1.6-.4-3.6-1.6-5.3-.7-1-1.6-1.9-2.2-2.7-.6-.9-.8-1.7-.7-2.9.1-1.7-.4-3.9-2.1-3.9h-.7Z"/></svg>
-            <h3>Linux</h3>
+                <article class="download-card" data-platform="mac">
+                  <div class="download-card-head">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M16.7 12.4c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5.7-1 1.1-2 1.4-2.9-3.4-1.3-2.9-4.2-1.9-3.9v-.1Zm-2.6-8.8c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg>
+                    <h3 data-i18n="download.mac.title">macOS</h3>
+                  </div>
+                  <p data-i18n="download.mac.desc">Universal — Apple Silicon &amp; Intel.</p>
+                  <div class="download-actions" id="dl-mac">
+                    <a class="btn btn-primary btn-block dl-btn" data-asset="dmg-arm" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener"><span class="dl-label" data-i18n="download.fmt.dmgArm">.dmg (Apple Silicon)</span><span class="dl-size ltr"></span></a>
+                    <a class="btn btn-ghost btn-block dl-btn" data-asset="dmg-intel" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener"><span class="dl-label" data-i18n="download.fmt.dmgIntel">.dmg (Intel)</span><span class="dl-size ltr"></span></a>
+                  </div>
+                </article>
+
+                <article class="download-card" data-platform="linux">
+                  <div class="download-card-head">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12.5 2c-1.7 0-2.2 2.2-2.1 3.9.1 1.2-.1 2-.7 2.9-.6.8-1.5 1.7-2.2 2.7-1.2 1.7-1.9 3.7-1.6 5.3-.6.3-1 .9-.9 1.6.1 1 1.2 1.6 2.5 1.5.5.7 1.4 1.1 2.5 1.1 1 0 1.8-.4 2.3-1 .6.3 1.5.3 2.2 0 .5.6 1.3 1 2.3 1 1.1 0 2-.4 2.5-1.1 1.3.1 2.4-.5 2.5-1.5.1-.7-.3-1.3-.9-1.6.3-1.6-.4-3.6-1.6-5.3-.7-1-1.6-1.9-2.2-2.7-.6-.9-.8-1.7-.7-2.9.1-1.7-.4-3.9-2.1-3.9h-.7Z"/></svg>
+                    <h3 data-i18n="download.linux.title">Linux</h3>
+                  </div>
+                  <p data-i18n="download.linux.desc">Debian/Ubuntu, Fedora/RHEL, or any distro via AppImage.</p>
+                  <div class="download-actions" id="dl-linux">
+                    <a class="btn btn-primary btn-block dl-btn" data-asset="deb" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener"><span class="dl-label" data-i18n="download.fmt.deb">.deb — Debian / Ubuntu</span><span class="dl-size ltr"></span></a>
+                    <a class="btn btn-ghost btn-block dl-btn" data-asset="rpm" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener"><span class="dl-label" data-i18n="download.fmt.rpm">.rpm — Fedora / RHEL</span><span class="dl-size ltr"></span></a>
+                    <a class="btn btn-ghost btn-block dl-btn" data-asset="appimage" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener"><span class="dl-label" data-i18n="download.fmt.appimage">.AppImage — Any distro</span><span class="dl-size ltr"></span></a>
+                  </div>
+                </article>
+              </div>
+            </div>
           </div>
-          <p>Debian/Ubuntu, Fedora/RHEL, or any distro via AppImage.</p>
-          <div class="download-actions" id="dl-linux">
-            <a class="btn btn-primary btn-block dl-btn" data-asset="deb" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">.deb — Debian / Ubuntu <span class="dl-size"></span></a>
-            <a class="btn btn-ghost btn-block dl-btn" data-asset="rpm" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">.rpm — Fedora / RHEL <span class="dl-size"></span></a>
-            <a class="btn btn-ghost btn-block dl-btn" data-asset="appimage" href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">.AppImage — Any distro <span class="dl-size"></span></a>
-          </div>
-        </article>
+        </div>
       </div>
 
       <div class="callout reveal">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
-        <p>Builds are currently unsigned. Windows SmartScreen and macOS Gatekeeper will show a warning on first launch — choose <strong>"More info → Run anyway"</strong> (Windows) or <strong>right-click → Open</strong> (macOS).</p>
+        <p data-i18n="download.callout">Builds are currently unsigned. Windows SmartScreen and macOS Gatekeeper will show a warning on first launch — choose <strong>"More info → Run anyway"</strong> (Windows) or <strong>right-click → Open</strong> (macOS).</p>
       </div>
 
-      <p class="all-releases-link reveal">Looking for an older build or checksums? See <a href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">all releases on GitHub ↗</a></p>
+      <p class="all-releases-link reveal" data-i18n="download.allReleases">Looking for an older build or checksums? See <a href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">all releases on GitHub ↗</a></p>
     </div>
   </section>
 
@@ -278,23 +299,23 @@
   <section class="section" id="architecture">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Architecture</span>
-        <h2>A Tauri app — Rust core, native webview UI.</h2>
-        <p class="section-sub">A Rust backend with a native OS webview for the UI, rather than a bundled browser runtime.</p>
+        <span class="eyebrow" data-i18n="architecture.eyebrow">Architecture</span>
+        <h2 data-i18n="architecture.title">A Tauri app — Rust core, native webview UI.</h2>
+        <p class="section-sub" data-i18n="architecture.sub">A Rust backend with a native OS webview for the UI, rather than a bundled browser runtime.</p>
       </div>
 
       <div class="arch-grid">
         <article class="arch-card reveal">
-          <code class="arch-path">crates/zdm-core/</code>
-          <p>The download engine — pure Rust, no GUI dependency. Probes a URL for range support, splits the file into small chunks, and hands them out to N concurrent workers pulling from a shared queue. Persists enough state (<code>&lt;file&gt;.zdm.json</code>) to resume after a restart, and validates the remote hasn't changed (via ETag/Last-Modified) before trusting old progress. Has its own test suite that runs against a real local HTTP server — no mocked network layer.</p>
+          <code class="arch-path ltr">crates/zdm-core/</code>
+          <p data-i18n="architecture.core.desc">The download engine — pure Rust, no GUI dependency. Probes a URL for range support, splits the file into small chunks, and hands them out to N concurrent workers pulling from a shared queue. Persists enough state (<code>&lt;file&gt;.zdm.json</code>) to resume after a restart, and validates the remote hasn't changed (via ETag/Last-Modified) before trusting old progress. Has its own test suite that runs against a real local HTTP server — no mocked network layer.</p>
         </article>
         <article class="arch-card reveal">
-          <code class="arch-path">src-tauri/</code>
-          <p>The Tauri backend — turns engine events into app-level <code>DownloadRecord</code>s, runs the queue scheduler (which downloads get a connection slot), persists history/queues/settings to a local SQLite database, and exposes commands to the frontend.</p>
+          <code class="arch-path ltr">src-tauri/</code>
+          <p data-i18n="architecture.tauri.desc">The Tauri backend — turns engine events into app-level <code>DownloadRecord</code>s, runs the queue scheduler (which downloads get a connection slot), persists history/queues/settings to a local SQLite database, and exposes commands to the frontend.</p>
         </article>
         <article class="arch-card reveal">
-          <code class="arch-path">src/</code>
-          <p>The React + TypeScript UI — hand-rolled CSS design tokens, no component framework, so every pixel matches the app's own visual identity rather than a generic design system's defaults.</p>
+          <code class="arch-path ltr">src/</code>
+          <p data-i18n="architecture.ui.desc">The React + TypeScript UI — hand-rolled CSS design tokens, no component framework, so every pixel matches the app's own visual identity rather than a generic design system's defaults.</p>
         </article>
       </div>
     </div>
@@ -304,14 +325,14 @@
   <section class="section section-alt" id="get-started">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Development</span>
-        <h2>Build it yourself in four commands.</h2>
+        <span class="eyebrow" data-i18n="getstarted.eyebrow">Development</span>
+        <h2 data-i18n="getstarted.title">Build it yourself in four commands.</h2>
       </div>
 
       <div class="code-block reveal">
         <div class="code-block-head">
-          <span>Terminal</span>
-          <button class="copy-btn" type="button" data-copy="git clone https://github.com/thisisroot/zdm.git&#10;cd zdm&#10;npm install&#10;npm run tauri dev">Copy</button>
+          <span data-i18n="getstarted.terminal">Terminal</span>
+          <button class="copy-btn" type="button" data-copy="git clone https://github.com/thisisroot/zdm.git&#10;cd zdm&#10;npm install&#10;npm run tauri dev" data-i18n="getstarted.copy">Copy</button>
         </div>
         <pre><code><span class="tok-c"># clone and run in dev mode</span>
 git clone https://github.com/thisisroot/zdm.git
@@ -321,44 +342,65 @@ npm run tauri dev</code></pre>
       </div>
 
       <div class="prereqs reveal">
-        <details class="prereq" open>
-          <summary>Windows prerequisites</summary>
-          <ul>
-            <li><a href="https://rustup.rs" target="_blank" rel="noopener">Rust</a> (MSVC toolchain — the default rustup install)</li>
-            <li><a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> 20+</li>
-            <li><a href="https://visualstudio.microsoft.com/downloads/" target="_blank" rel="noopener">Visual Studio Build Tools</a> with the "Desktop development with C++" workload</li>
-            <li>WebView2 Runtime (preinstalled on Windows 10/11)</li>
-          </ul>
-        </details>
-        <details class="prereq">
-          <summary>macOS prerequisites</summary>
-          <ul>
-            <li><a href="https://rustup.rs" target="_blank" rel="noopener">Rust</a></li>
-            <li><a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> 20+</li>
-            <li>Xcode Command Line Tools (<code>xcode-select --install</code>)</li>
-          </ul>
-        </details>
-        <details class="prereq">
-          <summary>Linux (Debian/Ubuntu) prerequisites</summary>
-          <pre class="prereq-code"><code>sudo apt update
+        <div class="collapsible prereq open" data-collapsible>
+          <button class="collapsible-trigger prereq-summary" type="button" aria-expanded="true">
+            <span data-i18n="getstarted.win.summary">Windows prerequisites</span>
+            <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="collapsible-panel">
+            <div class="collapsible-inner">
+              <ul>
+                <li data-i18n="getstarted.win.item1"><a href="https://rustup.rs" target="_blank" rel="noopener">Rust</a> (MSVC toolchain — the default rustup install)</li>
+                <li data-i18n="getstarted.win.item2"><a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> 20+</li>
+                <li data-i18n="getstarted.win.item3"><a href="https://visualstudio.microsoft.com/downloads/" target="_blank" rel="noopener">Visual Studio Build Tools</a> with the "Desktop development with C++" workload</li>
+                <li data-i18n="getstarted.win.item4">WebView2 Runtime (preinstalled on Windows 10/11)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="collapsible prereq" data-collapsible>
+          <button class="collapsible-trigger prereq-summary" type="button" aria-expanded="false">
+            <span data-i18n="getstarted.mac.summary">macOS prerequisites</span>
+            <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="collapsible-panel">
+            <div class="collapsible-inner">
+              <ul>
+                <li><a href="https://rustup.rs" target="_blank" rel="noopener">Rust</a></li>
+                <li data-i18n="getstarted.win.item2"><a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> 20+</li>
+                <li data-i18n="getstarted.mac.item3">Xcode Command Line Tools (<code>xcode-select --install</code>)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="collapsible prereq" data-collapsible>
+          <button class="collapsible-trigger prereq-summary" type="button" aria-expanded="false">
+            <span data-i18n="getstarted.linux.summary">Linux (Debian/Ubuntu) prerequisites</span>
+            <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="collapsible-panel">
+            <div class="collapsible-inner">
+              <pre class="prereq-code"><code>sudo apt update
 sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file \
   libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev pkg-config libdbus-1-dev</code></pre>
-        </details>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="testing-row reveal">
         <div>
-          <h4>Build an installer</h4>
-          <code>npm run tauri build</code>
+          <h4 data-i18n="getstarted.buildInstaller">Build an installer</h4>
+          <code class="ltr">npm run tauri build</code>
         </div>
         <div>
-          <h4>Run tests</h4>
-          <code>cargo test --workspace</code>
-          <code>npx tsc -b</code>
+          <h4 data-i18n="getstarted.runTests">Run tests</h4>
+          <code class="ltr">cargo test --workspace</code>
+          <code class="ltr">npx tsc -b</code>
         </div>
       </div>
 
-      <p class="contrib-note reveal">Issues and pull requests are welcome. For anything nontrivial, please <a href="https://github.com/thisisroot/zdm/issues" target="_blank" rel="noopener">open an issue first</a> to discuss the approach before sending a PR.</p>
+      <p class="contrib-note reveal" data-i18n="getstarted.contribNote">Issues and pull requests are welcome. For anything nontrivial, please <a href="https://github.com/thisisroot/zdm/issues" target="_blank" rel="noopener">open an issue first</a> to discuss the approach before sending a PR.</p>
     </div>
   </section>
 
@@ -366,15 +408,15 @@ sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file \
   <section class="section support-section">
     <div class="wrap support-inner reveal">
       <img src="assets/logo.png" alt="" class="support-logo" width="72" height="72">
-      <h2>If ZDM saves you time, it's free to say thanks.</h2>
-      <p>Starring the repo helps other people discover the project and costs you nothing but a click.</p>
+      <h2 data-i18n="support.title">If ZDM saves you time, it's free to say thanks.</h2>
+      <p data-i18n="support.desc">Starring the repo helps other people discover the project and costs you nothing but a click.</p>
       <div class="support-actions">
         <span class="gh-btn-wrap" id="ghStarWrap">
           <iframe src="https://ghbtns.com/github-btn.html?user=thisisroot&repo=zdm&type=star&count=true&size=large"
                   frameborder="0" scrolling="0" width="170" height="30" title="GitHub Star"></iframe>
         </span>
-        <a class="btn btn-ghost" href="https://github.com/thisisroot/zdm/issues" target="_blank" rel="noopener">Report an issue</a>
-        <a class="btn btn-ghost" href="https://github.com/thisisroot/zdm/fork" target="_blank" rel="noopener">Fork &amp; contribute</a>
+        <a class="btn btn-ghost" href="https://github.com/thisisroot/zdm/issues" target="_blank" rel="noopener" data-i18n="support.reportIssue">Report an issue</a>
+        <a class="btn btn-ghost" href="https://github.com/thisisroot/zdm/fork" target="_blank" rel="noopener" data-i18n="support.fork">Fork &amp; contribute</a>
       </div>
     </div>
   </section>
@@ -383,31 +425,31 @@ sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file \
   <section class="section section-alt" id="contact">
     <div class="wrap contact-wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Contact</span>
-        <h2>Questions, feedback, or a bug that isn't on GitHub yet?</h2>
-        <p class="section-sub">Send a message straight to my inbox — this opens your email client with everything pre-filled.</p>
+        <span class="eyebrow" data-i18n="contact.eyebrow">Contact</span>
+        <h2 data-i18n="contact.title">Questions, feedback, or a bug that isn't on GitHub yet?</h2>
+        <p class="section-sub" data-i18n="contact.sub">Send a message straight to my inbox — this opens your email client with everything pre-filled.</p>
       </div>
 
       <form class="contact-form reveal" id="contactForm" novalidate>
         <div class="field-row">
           <label>
-            <span>Name</span>
+            <span data-i18n="contact.name">Name</span>
             <input type="text" name="name" id="cf-name" required autocomplete="name">
           </label>
           <label>
-            <span>Your email</span>
+            <span data-i18n="contact.email">Your email</span>
             <input type="email" name="email" id="cf-email" required autocomplete="email">
           </label>
         </div>
         <label>
-          <span>Message</span>
+          <span data-i18n="contact.message">Message</span>
           <textarea name="message" id="cf-message" rows="5" required></textarea>
         </label>
         <div class="contact-form-foot">
-          <p class="contact-direct">or email directly: <a href="mailto:iranb@artificiallyintimate.wtf">iranb@artificiallyintimate.wtf</a></p>
+          <p class="contact-direct"><span data-i18n="contact.directPrefix">or email directly:</span> <a href="mailto:zed@zeddm.ir" class="ltr">zed@zeddm.ir</a></p>
           <button class="btn btn-primary" type="submit">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
-            Send message
+            <span data-i18n="contact.send">Send message</span>
           </button>
         </div>
       </form>
@@ -422,14 +464,14 @@ sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file \
       <img src="assets/logo.png" alt="" width="28" height="28">
       <span>ZDM</span>
     </div>
-    <p class="footer-tagline">A fast, segmented download manager for Windows, macOS, and Linux.</p>
+    <p class="footer-tagline" data-i18n="footer.tagline">A fast, segmented download manager for Windows, macOS, and Linux.</p>
     <div class="footer-links">
-      <a href="https://github.com/thisisroot/zdm" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener">Releases</a>
-      <a href="https://github.com/thisisroot/zdm/issues" target="_blank" rel="noopener">Issues</a>
-      <a href="https://github.com/thisisroot/zdm/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      <a href="https://github.com/thisisroot/zdm" target="_blank" rel="noopener" data-i18n="footer.github">GitHub</a>
+      <a href="https://github.com/thisisroot/zdm/releases" target="_blank" rel="noopener" data-i18n="footer.releases">Releases</a>
+      <a href="https://github.com/thisisroot/zdm/issues" target="_blank" rel="noopener" data-i18n="footer.issues">Issues</a>
+      <a href="https://github.com/thisisroot/zdm/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="footer.license">MIT License</a>
     </div>
-    <p class="footer-fine">Unofficial fan-made landing page for the open-source ZDM project. Not affiliated with GitHub.</p>
+    <p class="footer-fine" data-i18n="footer.fine">Built and maintained by the ZDM author. Contributions and feedback are always welcome.</p>
   </div>
 </footer>
 
