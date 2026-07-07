@@ -43,12 +43,6 @@ if (!is_array($input)) {
 $name = trim((string)($input['name'] ?? ''));
 $email = trim((string)($input['email'] ?? ''));
 $message = trim((string)($input['message'] ?? ''));
-$honeypot = trim((string)($input['company'] ?? ''));
-
-// Bots that fill in the hidden honeypot field get a fake success so they don't retry.
-if ($honeypot !== '') {
-    respond(200, ['ok' => true]);
-}
 
 if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(422, ['ok' => false, 'error' => 'missing or invalid fields']);

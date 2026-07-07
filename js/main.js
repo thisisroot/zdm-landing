@@ -104,7 +104,6 @@
     'support.fork': 'فورک و مشارکت',
     'contact.eyebrow': 'تماس',
     'contact.title': 'سوال، بازخورد یا باگی دارید که هنوز در گیت‌هاب ثبت نشده؟',
-    'contact.sub': 'پیام را مستقیم به اینباکس من بفرستید — بدون نیاز به هیچ برنامه‌ی ایمیلی.',
     'contact.name': 'نام',
     'contact.email': 'ایمیل شما',
     'contact.message': 'پیام',
@@ -683,7 +682,6 @@
     const name = document.getElementById('cf-name').value.trim();
     const email = document.getElementById('cf-email').value.trim();
     const message = document.getElementById('cf-message').value.trim();
-    const company = document.getElementById('cf-company')?.value || ''; // honeypot
 
     if (!name || !email || !message) {
       toast(t('toast.fillFields'));
@@ -698,7 +696,7 @@
       const res = await fetch('/api/contact.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message, company }),
+        body: JSON.stringify({ name, email, message }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);

@@ -393,7 +393,6 @@ html[dir="rtl"] .app-mock{ transform:perspective(1200px) rotateY(6deg) rotateX(2
 /* contact */
 .contact-wrap{ max-width:720px; }
 .contact-form{ display:flex; flex-direction:column; gap:18px; }
-.hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
 .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 .contact-form label{ display:flex; flex-direction:column; gap:7px; font-size:13px; color:var(--text-dim); font-weight:500; }
 .contact-form input, .contact-form textarea{
