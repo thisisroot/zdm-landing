@@ -3,7 +3,6 @@
 
   const REPO = 'thisisroot/zdm';
   const API_BASE = `https://api.github.com/repos/${REPO}`;
-  const CONTACT_EMAIL = 'zed@zeddm.ir';
   const CACHE_TTL_MS = 10 * 60 * 1000;
 
   // Persian is fully translated below but temporarily hidden from users (toggle
@@ -105,7 +104,7 @@
     'support.fork': 'فورک و مشارکت',
     'contact.eyebrow': 'تماس',
     'contact.title': 'سوال، بازخورد یا باگی دارید که هنوز در گیت‌هاب ثبت نشده؟',
-    'contact.sub': 'پیام را مستقیم به اینباکس من بفرستید — با این کار برنامه‌ی ایمیل شما باز می‌شود و همه‌چیز از قبل پر شده است.',
+    'contact.sub': 'پیام را مستقیم به اینباکس من بفرستید — بدون نیاز به هیچ برنامه‌ی ایمیلی.',
     'contact.name': 'نام',
     'contact.email': 'ایمیل شما',
     'contact.message': 'پیام',
@@ -120,7 +119,9 @@
     'toast.copied': 'در کلیپ‌بورد کپی شد',
     'toast.copyFailed': 'کپی نشد — به‌صورت دستی انتخاب کنید',
     'toast.fillFields': 'لطفاً همه‌ی فیلدها را پر کنید',
-    'toast.openingEmail': 'در حال باز کردن برنامه‌ی ایمیل شما…',
+    'toast.sending': 'در حال ارسال…',
+    'toast.sent': 'پیام شما ارسال شد — به‌زودی پاسخ می‌دهم.',
+    'toast.sendFailed': 'ارسال پیام ناموفق بود — لطفاً مستقیم ایمیل بزنید.',
     'apiError.version': 'اتصال به گیت‌هاب برقرار نشد — صفحه‌ی نسخه‌ها را ببینید',
     'apiError.releaseInfo': 'در حال حاضر امکان دریافت اطلاعات نسخه از گیت‌هاب نیست — مستقیم به صفحه‌ی نسخه‌ها مراجعه کنید.',
     'badge.prerelease': ' · پیش‌انتشار',
@@ -163,7 +164,9 @@
     'toast.copied': 'Copied to clipboard',
     'toast.copyFailed': 'Could not copy — select manually',
     'toast.fillFields': 'Please fill in every field',
-    'toast.openingEmail': 'Opening your email client…',
+    'toast.sending': 'Sending…',
+    'toast.sent': 'Message sent — I\'ll get back to you soon.',
+    'toast.sendFailed': 'Could not send — please email directly instead.',
     'apiError.version': 'Could not reach GitHub — see releases page',
     'apiError.releaseInfo': 'Could not load release data from GitHub right now — browse releases directly.',
     'badge.prerelease': ' · pre-release',
@@ -673,22 +676,39 @@
   initStars();
   applyLanguage(currentLang);
 
-  /* ---------------- contact form -> mailto ---------------- */
+  /* ---------------- contact form -> real send via /api/contact.php ---------------- */
   const contactForm = document.getElementById('contactForm');
-  contactForm?.addEventListener('submit', (e) => {
+  contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('cf-name').value.trim();
     const email = document.getElementById('cf-email').value.trim();
     const message = document.getElementById('cf-message').value.trim();
+    const company = document.getElementById('cf-company')?.value || ''; // honeypot
 
     if (!name || !email || !message) {
       toast(t('toast.fillFields'));
       return;
     }
 
-    const subject = encodeURIComponent(`ZDM contact form — message from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n—\n${name}\n${email}`);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    toast(t('toast.openingEmail'));
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    toast(t('toast.sending'));
+
+    try {
+      const res = await fetch('/api/contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, company }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);
+      toast(t('toast.sent'));
+      contactForm.reset();
+    } catch (err) {
+      console.warn('ZDM: contact form send failed', err);
+      toast(t('toast.sendFailed'));
+    } finally {
+      submitBtn.disabled = false;
+    }
   });
 })();
