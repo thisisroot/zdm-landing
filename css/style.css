@@ -427,7 +427,7 @@ html[dir="rtl"] .app-mock{ transform:perspective(1200px) rotateY(6deg) rotateX(2
 /* ---------------- responsive ---------------- */
 @media (max-width:900px){
   .hero-inner{ grid-template-columns:1fr; }
-  .hero-visual{ order:-1; max-width:480px; width:100%; margin:0 auto; overflow:hidden; border-radius:var(--radius-lg); }
+  .hero-visual{ order:-1; max-width:480px; margin:0 auto; overflow:hidden; border-radius:var(--radius-lg); }
   .app-mock{ transform:none; }
   .feature-grid, .download-grid, .arch-grid{ grid-template-columns:1fr 1fr; }
   .nav-links, .navbar-actions .nav-download, .navbar-actions .github-star span:not(.star-count){ display:none; }
